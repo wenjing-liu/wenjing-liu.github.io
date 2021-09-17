@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          特征工程 - Wenjing | Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://wenjing-liu.github.io/article/2019-07-29-特征工程/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/article_header.png')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#特征工程" title="特征工程">特征工程</a>
+                            
+                        </div>
+                        <h1>特征工程</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Wenjing Liu on
+                            2019-07-29
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Wenjing Liu</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+<p>数据和特征决定了机器学习的上限，而模型和算法只是逼近这个上限而已<br>
+实践中学习的手艺<br>
+More data beats clever algorithms, but better data beats more data</p>
+</blockquote>
+<h3><span id="特征工程包含以下几个方面">特征工程包含以下几个方面：</span></h3>
+<h4><span id="特征使用方案">特征使用方案</span></h4>
+<ul>
+<li>要实现我们的目标需要哪些数据？
+<ul>
+<li>基于业务理解，尽可能找出对因变量有影响的所有自变量</li>
+</ul>
+</li>
+<li>可用性评估
+<ul>
+<li>获取难度</li>
+<li>覆盖率</li>
+<li>准确率</li>
+</ul>
+</li>
+</ul>
+<h4><span id="特征获取方案">特征获取方案</span></h4>
+<ul>
+<li>如何获取这些特征？</li>
+<li>如何存储？</li>
+</ul>
+<h4><span id="特征处理">特征处理</span></h4>
+<ul>
+<li>特征特征清洗
+<ul>
+<li>清洗异样样本</li>
+<li>采样
+<ul>
+<li>数据不均衡</li>
+<li>样本权重</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>预处理
+<ul>
+<li>单个特征
+<ul>
+<li>归一化</li>
+<li>离散化</li>
+<li>Dummy Coding</li>
+<li>缺失值</li>
+<li>数据变换
+<ul>
+<li>log</li>
+<li>指数</li>
+<li>Box-Cox</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>多个特征
+<ul>
+<li>Filter
+<ul>
+<li>思路：自变量和目标变量之间的关联</li>
+<li>相关系数</li>
+<li>卡方检验</li>
+<li>信息增益、 互信息</li>
+</ul>
+</li>
+<li>Wrapper
+<ul>
+<li>思路: 通过目标函数（AUC/MSE）来决定是否加入一个变量</li>
+<li>迭代：产生特征子集，评价
+<ul>
+<li>完全搜索</li>
+<li>启发式搜索</li>
+<li>随机搜索
+<ul>
+<li>GA</li>
+<li>SA</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Embedded
+<ul>
+<li>思路：学习期自身自动选择特征</li>
+<li>正则化
+<ul>
+<li>L1 – Lasso</li>
+<li>L2 – Ridge</li>
+</ul>
+</li>
+<li>决策树 – 熵、信息增益</li>
+<li>深度学习</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>衍生变量 – 对原始数据加工，生成有商业意义的变量</li>
+</ul>
+</li>
+</ul>
+<h4><span id="特征监控">特征监控</span></h4>
+<ul>
+<li>特征有效性分析</li>
+<li>特征监控</li>
+</ul>
+<h3><span id="最基本的特征工程方法">最基本的特征工程方法</span></h3>
+<h4><span id="类别特征">类别特征</span></h4>
+<ul>
+<li>特点
+<ul>
+<li>几乎总是需要一些处理</li>
+<li>高基数可以创建非常稀疏的数据</li>
+<li>很难插补缺失数据</li>
+</ul>
+</li>
+<li>方法
+<ul>
+<li>
+<p>独热编码（One-Hot Encoding）</p>
+<ul>
+<li>概念
+<ul>
+<li>在长度为K的数组上做 one-of-k 编码</li>
+<li>基本方法： 与大多数线性算法一起使用</li>
+<li>删除第一列可以避免多重共线性</li>
+<li>稀疏格式对内存友好</li>
+<li>当前大多数实现都没有处理缺失，看不见的数据</li>
+</ul>
+</li>
+<li>例子
+<ul>
+<li>[‘BR’]
+<table>
+<thead>
+<tr>
+<th>国家  =&gt;</th>
+<th>国家=NL</th>
+<th>国家=BR</th>
+<th>国家=US</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NL</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>BR</td>
+<td>[   0</td>
+<td>1</td>
+<td>0]</td>
+</tr>
+<tr>
+<td>US</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>编码集：[0, 1, 0]</li>
+<li>编码稀疏： 2:1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>散列编码（Hash encoding)</p>
+<ul>
+<li>概念
+<ul>
+<li>独热编码是否具有固定长度的数组？</li>
+<li>避免极其稀疏的数据</li>
+<li>可能会引入碰撞</li>
+<li>可以重复的使用不同的哈希函数和包获得小的精度</li>
+<li>碰撞通常会降低结果，但可能会改善结果</li>
+<li>优雅地处理新变量（例如：新用户代理）</li>
+</ul>
+</li>
+<li>例子
+<ul>
+<li>[‘BR’]</li>
+<li>hash(‘BR’) =&gt;
+<table>
+<thead>
+<tr>
+<th>国家</th>
+<th>hash1</th>
+<th>hash2</th>
+<th>hash3</th>
+<th>hash4</th>
+<th>hash5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NL</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>BR</td>
+<td>[   0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0]</td>
+</tr>
+<tr>
+<td>US</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>编码集：[0, 1, 0, 0, 0]</li>
+<li>编码稀疏： 2:1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>标签编码（Label encoding）</p>
+<ul>
+<li>概念
+<ul>
+<li>为每个类别变量提供唯一的数字ID</li>
+<li>对于非线性基于树的算法很有用</li>
+<li>不增加维度</li>
+<li>随机化类别变量到数值变量的映射并重新训练， 平均以获得精度较小的凸凹</li>
+</ul>
+</li>
+<li>例子
+<ul>
+<li>[‘Queenstown’]
+<table>
+<thead>
+<tr>
+<th>城市  =&gt;</th>
+<th>city</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cherbourg</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Queenstown</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Southhampton</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>编码： [2]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>计数编码（Count encoding）</p>
+<ul>
+<li>概念
+<ul>
+<li>将类别变量替换为他们在训练数据中的计数</li>
+<li>适用于线性和非线性算法</li>
+<li>可以对异常值敏感</li>
+<li>可以加入对数转换（log transform）, 与计数一起工作的很好</li>
+<li>用‘1’替换看不见的数据</li>
+<li>可能会发生冲突：相同的编码，不同的变量</li>
+</ul>
+</li>
+<li>例子
+<ul>
+<li>[‘A6GHBD78’]
+<table>
+<thead>
+<tr>
+<th>teacher_id</th>
+<th>teacher_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEADB33F</td>
+<td>4</td>
+</tr>
+<tr>
+<td>A6GHBD78</td>
+<td>3</td>
+</tr>
+<tr>
+<td>DEADB33F</td>
+<td>4</td>
+</tr>
+<tr>
+<td>FCKGWRHQ</td>
+<td>1</td>
+</tr>
+<tr>
+<td>DEADB33F</td>
+<td>4</td>
+</tr>
+<tr>
+<td>A6GHBD78</td>
+<td>3</td>
+</tr>
+<tr>
+<td>A6GHBD78</td>
+<td>3</td>
+</tr>
+<tr>
+<td>DEADB33F</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>编码： [3]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>标签计数编码（LabelCount encoding）</p>
+<ul>
+<li>概念
+<ul>
+<li>在训练数据中，对类别变量进行排名</li>
+<li>适用于线性和非线性算法</li>
+<li>对异常值不敏感</li>
+<li>不会对不同的变量赋予相同的编码</li>
+<li>两全其美</li>
+</ul>
+</li>
+<li>例子
+<ul>
+<li>[‘nl’]
+<table>
+<thead>
+<tr>
+<th>tld</th>
+<th>tld</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nl</td>
+<td>3</td>
+</tr>
+<tr>
+<td>nl</td>
+<td>3</td>
+</tr>
+<tr>
+<td>nl</td>
+<td>3</td>
+</tr>
+<tr>
+<td>nl</td>
+<td>3</td>
+</tr>
+<tr>
+<td>de</td>
+<td>2</td>
+</tr>
+<tr>
+<td>de</td>
+<td>2</td>
+</tr>
+<tr>
+<td>fr</td>
+<td>1</td>
+</tr>
+<tr>
+<td>fr</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>编码： [3]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Target encoding</p>
+<ul>
+<li>概念
+<ul>
+<li>根据目标比率对类别变量进行编码（二进制分类或回归）</li>
+<li>小心避免过度拟合（overfit）</li>
+<li>堆叠的形式：单变量模型，其输出平均目标</li>
+<li>以交叉验证方式进行</li>
+<li>添加平滑以避免将变量编码设置为0</li>
+<li>添加随机噪音以对抗过拟合</li>
+<li>什么时候用：线性和非线性的最佳编码</li>
+</ul>
+</li>
+<li>例子
+<table>
+<thead>
+<tr>
+<th>role</th>
+<th>y</th>
+<th>role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>manager</td>
+<td>1</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>engineer</td>
+<td>1</td>
+<td>0.66</td>
+</tr>
+<tr>
+<td>scientist</td>
+<td>1</td>
+<td>1.</td>
+</tr>
+<tr>
+<td>manager</td>
+<td>0</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>engineer</td>
+<td>0</td>
+<td>0.66</td>
+</tr>
+<tr>
+<td>engineer</td>
+<td>1</td>
+<td>0.66</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>类别嵌入（Category Embedding）</p>
+<ul>
+<li>概念
+<ul>
+<li>使用神经网络从类别变量创建密集嵌入</li>
+<li>将函数逼近问题中的类别变量映射到欧几里德空间</li>
+<li>更快的模型训练</li>
+<li>减少内存开销</li>
+<li>可以提供比1-hot 编码更好的精准度</li>
+</ul>
+</li>
+<li>例子
+<table>
+<thead>
+<tr>
+<th>role</th>
+<th>role 3-D embedding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>manager</td>
+<td>[0.05, 0.10, 0.96]</td>
+</tr>
+<tr>
+<td>engineer</td>
+<td>[0.72, 0.66, 0.17]</td>
+</tr>
+<tr>
+<td>scientist</td>
+<td>[0.75, 0.62, 0.15]</td>
+</tr>
+<tr>
+<td>manager</td>
+<td>[0.05, 0.10, 0.96]</td>
+</tr>
+<tr>
+<td>engineer</td>
+<td>[0.72, 0.66, 0.17]</td>
+</tr>
+<tr>
+<td>engineer</td>
+<td>[0.72, 0.66, 0.17]</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>NaN编码（NaN encoding）</p>
+<ul>
+<li>概念
+<ul>
+<li>为NaN值提供显式编码而不是忽略</li>
+<li>NaN值可以保存信息</li>
+<li>小心避免过度拟合</li>
+<li>仅在训练数据和测试数据中的Nan值是由相同的原因引起时才可以用，或者本地验证证明它持有信息</li>
+</ul>
+</li>
+<li>例子
+<ul>
+<li>[‘NaN’]
+<table>
+<thead>
+<tr>
+<th>UA</th>
+<th>UA=mobile</th>
+<th>UA=tablet</th>
+<th>UA=NaN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mobile</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>tablet</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mobile</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>NaN</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>编码： [0, 0, 1]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>多项式编码（Polynomial encoding）</p>
+<ul>
+<li>概念
+<ul>
+<li>类别变量之间的编码交互</li>
+<li>没有交互的线性算法无法解决XOR问题</li>
+<li>多项式内核可以解决XOR问题</li>
+<li>爆炸式的特征空间： 使用FS，散列或者VW</li>
+</ul>
+</li>
+<li>例子
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>y</th>
+<th>A=1*B=1</th>
+<th>A=0*B=1</th>
+<th>A=1*B=0</th>
+<th>A=0*B=0</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>
+<p>扩展编码（Expansion encoding）</p>
+<ul>
+<li>概念
+<ul>
+<li>从单个变量创建多个类别变量</li>
+<li>某些高基数功能（如用户代理）在其中包含更多信息：
+<ul>
+<li>is_mobile?</li>
+<li>is_latest_version?</li>
+<li>Operation_system</li>
+<li>Browser_build</li>
+<li>etc…</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>例子
+<ul>
+<li>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36<br>
+==&gt;
+<table>
+<thead>
+<tr>
+<th>UA1</th>
+<th>UA2</th>
+<th>UA3</th>
+<th>UA4</th>
+<th>UA5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chrome</td>
+<td>53.0.2785.143</td>
+<td>Desktop</td>
+<td>Mac</td>
+<td>10_10_4</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>合并编码（Consolidation encoding）</p>
+<ul>
+<li>概念
+<ul>
+<li>将不同的类别变量映射到同一个变量</li>
+<li>拼写错误，略有不同的职位描述，全名 vs 缩写</li>
+<li>真实数据很乱，自由文本尤其如此</li>
+</ul>
+</li>
+<li>例子
+<table>
+<thead>
+<tr>
+<th>company_desc   =&gt;</th>
+<th>desc1</th>
+<th>company_desc2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shell</td>
+<td>Shell</td>
+<td>Gas station</td>
+</tr>
+<tr>
+<td>shel</td>
+<td>Shell</td>
+<td>Gas station</td>
+</tr>
+<tr>
+<td>SHELL</td>
+<td>Shell</td>
+<td>Gas station</td>
+</tr>
+<tr>
+<td>Shell Gasonline</td>
+<td>Shell</td>
+<td>Gas station</td>
+</tr>
+<tr>
+<td>BP</td>
+<td>BP</td>
+<td>Gas station</td>
+</tr>
+<tr>
+<td>British Petr.</td>
+<td>BP</td>
+<td>Gas station</td>
+</tr>
+<tr>
+<td>B&amp;P</td>
+<td>BP</td>
+<td>Gas station</td>
+</tr>
+<tr>
+<td>BP Gas Station</td>
+<td>BP</td>
+<td>Gas station</td>
+</tr>
+<tr>
+<td>bp</td>
+<td>BP</td>
+<td>Gas station</td>
+</tr>
+<tr>
+<td>Procter&amp;Gamble</td>
+<td>P&amp;G</td>
+<td>Manufacturer</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4><span id="数值特征">数值特征</span></h4>
+<ul>
+<li>特点
+<ul>
+<li>可以更容易地输入算法</li>
+<li>可以构成浮点数，计数，数字</li>
+<li>更容易估算缺失的数据</li>
+</ul>
+</li>
+<li>方法
+<ul>
+<li>四舍五入（Rounding）
+<ul>
+<li>概念
+<ul>
+<li>四舍五入数值变量</li>
+<li>有损压缩： 保留数据的最重要特征</li>
+<li>有时太精确只是噪音</li>
+<li>四舍五入的变量可以视为类别变量</li>
+<li>可以在四舍五入之前做对数变换</li>
+</ul>
+</li>
+<li>例子
+<table>
+<thead>
+<tr>
+<th>age</th>
+<th>age1</th>
+<th>age2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>23.6671</td>
+<td>23</td>
+<td>2</td>
+</tr>
+<tr>
+<td>23.8891</td>
+<td>23</td>
+<td>2</td>
+</tr>
+<tr>
+<td>22.1261</td>
+<td>22</td>
+<td>2</td>
+</tr>
+<tr>
+<td>19.5506</td>
+<td>19</td>
+<td>1</td>
+</tr>
+<tr>
+<td>18.2114</td>
+<td>18</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>分档（Binning）
+<ul>
+<li>概念
+<ul>
+<li>将数值变量放入bin（档）中并使用bin-ID进行编码</li>
+<li>分档可以务实设置，通过分位数，均匀的，或使用模型到最佳分档</li>
+<li>可以使得训练集所见范围以外的变量正常工作</li>
+</ul>
+</li>
+<li>例子
+<table>
+<thead>
+<tr>
+<th>risk_score</th>
+<th>rs[-inf, 33]</th>
+<th>rs[33,66]</th>
+<th>rs[66,inf]</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>77</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>78</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>55</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>42</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>缩放（Scaling）
+<ul>
+<li>概念
+<ul>
+<li>将数值变量扩展到特定范围</li>
+<li>Standard（Z）缩放</li>
+<li>MinMax 缩放</li>
+<li>Root 缩放</li>
+<li>Log 缩放</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>估算（Imputation）
+<ul>
+<li>概念
+<ul>
+<li>估算缺失的变量</li>
+<li>硬编码可与估算相结合</li>
+<li>平均：非常基本的</li>
+<li>中位数：对异常值鲁棒性比较高</li>
+<li>忽略： 只是推迟问题</li>
+<li>使用模型：可以暴露算法的偏差</li>
+</ul>
+</li>
+<li>例子
+<table>
+<thead>
+<tr>
+<th>wage</th>
+<th>hours</th>
+<th>gender</th>
+<th>y =&gt;</th>
+<th>wage</th>
+<th>hours</th>
+<th>gender_y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1600</td>
+<td>40</td>
+<td>0</td>
+<td>1</td>
+<td>1600</td>
+<td>40</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2200</td>
+<td>50</td>
+<td>1</td>
+<td>1</td>
+<td>2200</td>
+<td>50</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1800</td>
+<td>36</td>
+<td>0</td>
+<td>0</td>
+<td>1800</td>
+<td>36</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2100</td>
+<td>45</td>
+<td>1</td>
+<td>0</td>
+<td>2100</td>
+<td>45</td>
+<td>?</td>
+</tr>
+<tr>
+<td>2050</td>
+<td>60</td>
+<td>NaN</td>
+<td>0</td>
+<td>2050</td>
+<td>60</td>
+<td>?</td>
+</tr>
+<tr>
+<td>1650</td>
+<td>36</td>
+<td>0</td>
+<td>1</td>
+<td>1650</td>
+<td>36</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</li>
+<li>相互作用（Interactions）
+<ul>
+<li>概念
+<ul>
+<li>具体来说编码数值变量之间的相互作用</li>
+<li>尝试：减法，加法，乘法，除法</li>
+<li>使用：通过统 计测试选择特征，或训练模型特征重要性</li>
+<li>忽略：人的直觉; 奇怪的相互作用可以带来显著的改进</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>线性算法的非线性编码（No-linear encoding for linear algo’s）
+<ul>
+<li>概念
+<ul>
+<li>硬编码非线性以改进线性算法</li>
+<li>多项式内核</li>
+<li>叶编码（随机森林嵌入）</li>
+<li>遗传算法</li>
+<li>局部线性嵌入，光谱嵌入，t-SNE</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>行统计（Row statistics）
+<ul>
+<li>概念
+<ul>
+<li>创建一行数据的统计信息</li>
+<li>NaN的数量</li>
+<li>0的数量</li>
+<li>负数值的数量</li>
+<li>平均值，最大值，最小值，偏度 等</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4><span id="时间特征-temporal-variables">时间特征 (Temporal variables)</span></h4>
+<ul>
+<li>特点
+<ul>
+<li>时间变量，如日期，需要更好的本地验证方案（如回测）</li>
+<li>容易在这里犯错误</li>
+<li>很多机会进行重大改进</li>
+</ul>
+</li>
+<li>方法
+<ul>
+<li>投射到一个圆
+<ul>
+<li>将单个要素（如day_of_week）转换为圆上的两个坐标</li>
+<li>确保max和min之间的距离与min和min +1相同</li>
+<li>用于day_of_week，day_of_month，hour_of_day等</li>
+</ul>
+</li>
+<li>趋势线（Trendlines）
+<ul>
+<li>不是编码总支出，而是编码上周花费，上个月花费，去年花费。</li>
+<li>给算法的趋势：两个支出相同的客户可能会有截然不同的行为 - 一个客户可能开始花费更多，而另一个客户开始减少支出。</li>
+</ul>
+</li>
+<li>与重大事件的接近度（Closeness to major events）
+<ul>
+<li>硬编码类别特征，如：date_3_days_before_holidays = 1</li>
+<li>尝试：国庆节，重大体育赛事，周末，一个月的第一个星期六等</li>
+<li>这些因素可能对支出行为产生重大影响</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4><span id="空间特征spatial-variables">空间特征（Spatial Variables）</span></h4>
+<ul>
+<li>特点
+<ul>
+<li>空间变量是在空间编码的位置的变量</li>
+<li>例子包括：GPS坐标，城市，国家，地址</li>
+</ul>
+</li>
+<li>方法
+<ul>
+<li>分类位置（Categorizing location）
+<ul>
+<li>克里金法（Kriging）</li>
+<li>K-means聚类</li>
+<li>原始纬度经度</li>
+<li>将城市转换为纬度经度</li>
+<li>将邮政编码添加到街道名称</li>
+</ul>
+</li>
+<li>与枢纽的接近度（Closeness to Hubs）
+<ul>
+<li>找到位置与主要枢纽之间的紧密程度</li>
+<li>小城镇继承了附近大城市的一些文化/背景</li>
+<li>电话位置可以映射到附近的企业和超市</li>
+</ul>
+</li>
+<li>空间欺诈行为（Spatial fraudulent behavior）
+<ul>
+<li>位置事件数据可以指示可疑行为</li>
+<li>不可能的旅行速度：不同国家的多个同步交易</li>
+<li>在不同的城镇消费，而不是在家或送货地址</li>
+<li>永远不要在同一地点消费</li>
+</ul>
+</li>
+<li>探索（Exploration）
+<ul>
+<li>数据探索可以发现数据健康问题，异常值，噪声，特征工程想法，特征清洗想法</li>
+<li>可以使用：Console, Notebook, Pandas</li>
+<li>尝试简单的统计数据：最小值，最大值</li>
+<li>将目标结合起来，以便在信息之间找到相关性</li>
+</ul>
+</li>
+<li>迭代/调试（Iteration / Debugging）
+<ul>
+<li>特征工程是一个迭代过程：使你的pipelines适合快速迭代</li>
+<li>使用子线性调试：输出有关过程的中间信息，进行伪log</li>
+<li>使用允许快速实验的工具</li>
+<li>失败的想法会多余成功的想法</li>
+</ul>
+</li>
+<li>标签工程（Label Engineering）
+<ul>
+<li>可以将标签/目标/因变量视为数据的一个特征，反之亦然</li>
+<li>对数变换：y  - &gt; log（y + 1）| exp（y_pred） -  1</li>
+<li>Square 变换</li>
+<li>Box-Cox变换</li>
+<li>创建分数，在回归中转换二进制目标</li>
+<li>训练回归器以预测测试集中不可用的特征</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4><span id="自然语言处理natural-language-processing">自然语言处理（Natural Language Processing）</span></h4>
+<ul>
+<li>特点
+<ul>
+<li>可以用类别特征中相同的方法</li>
+<li>深度学习（自动特征工程）正在慢慢的吞噬这个领域，但是具有好的特征工程的浅学习仍然具有竞争力</li>
+<li>高稀疏性的数据将带来“维度诅咒”</li>
+<li>特征工程具有很多机会</li>
+</ul>
+</li>
+<li>方法
+<ul>
+<li>所有方法列表
+<ul>
+<li>转换成小写字母</li>
+<li>删除非字母数字</li>
+<li>修复</li>
+<li>编码标点符号</li>
+<li>符号化</li>
+<li>令牌克（Token-grams）</li>
+<li>skipgrams</li>
+<li>char-grams</li>
+<li>删除停用词</li>
+<li>删除罕见的单词</li>
+<li>非常常见的词</li>
+<li>拼写纠正</li>
+<li>砍字</li>
+<li>词干</li>
+<li>词形还原</li>
+<li>文档特征</li>
+<li>实体的插入和提取</li>
+<li>简化</li>
+<li>Word2Vec 和 GloVe / Doc2Vec</li>
+<li>字符串相似性</li>
+<li>阅读水平</li>
+<li>最近邻居</li>
+<li>TF*IDF</li>
+<li>BayesSVM，矢量化，LDA，LSA</li>
+</ul>
+</li>
+<li>清洗（Cleaning）
+<ul>
+<li>转换成小写字母：使标记独立于大写：“I work at NASA” -&gt; “i work at nasa”.</li>
+<li>转换成Unidecode：将字符转换为ascii-对应物：</li>
+<li>删除非字母数字：删除不在[a-z] [A-Z] [0-9]中的任何内容来清理文本，“Breaking! Amsterdam (2009)” -&gt; “Breaking Amsterdam 2009”</li>
+<li>修复：修复编码问题或修剪intertoken空格。 “C a s a C a f＆eacute;” - &gt;“CasaCafé”</li>
+</ul>
+</li>
+<li>符号化（Tokenizing）
+<ul>
+<li>编码标点符号：硬编码“！”和“？”作为标记。</li>
+<li>符号化（Tokenize）：划分句子标记成单词记号</li>
+<li>N-Grams：将连续的符号编码为符号,  “I like the Beatles” -&gt; [“I like”, “like the”, “the Beatles”]</li>
+<li>Skip-grams: 编码连续的符号，但跳过一些,  “I like the Beatles” -&gt; [“I the”, “like Beatles”]</li>
+<li>Char-grams: 与N-gram相同，但字符级别, “Beatles” - &gt; [“Bea”, “eat”, “atl”, “tle”, “les”]</li>
+<li>Affixes：与char-gram相同，但是仅限于前缀与后缀</li>
+</ul>
+</li>
+<li>删除（Removing）
+<ul>
+<li>停用词：删除停用词列表中出现的单词/标记</li>
+<li>稀有单词：删除仅在训练集中出现几次的单词</li>
+<li>常用词：删除可能不在停用词列表中的极其常见的词</li>
+</ul>
+</li>
+<li>根（Roots）
+<ul>
+<li>拼写纠正：将字符更改为正确的拼写</li>
+<li>切（chop）： 仅取一个单词的前n（8）个字符</li>
+<li>词干：将词/标记减少到其根， “cars” -&gt; “car”</li>
+<li>Lemmatize：找到语义根， “never be late” -&gt; “never are late”</li>
+</ul>
+</li>
+<li>丰富（Enrich）
+<ul>
+<li>文档特征：计算空格数量，tab数量，换行数量，字符数量，以及令牌数量等</li>
+<li>实体插入：向文本中插入更多的通用的规范， “Microsoft releases Windows” -&gt; “Microsoft (company) releases Windows (application)”</li>
+<li>解析树：将句子解析为逻辑形式，“Alice hits Bill” -&gt; Alice/Noun_subject hits/Verb Bill/Noun_object.</li>
+<li>阅读级别：计算文档的阅读级别</li>
+</ul>
+</li>
+<li>相似性（Similarities）
+<ul>
+<li>令牌相似性：计算出现在两个文本中的令牌数</li>
+<li>压缩距离：查看是否可以使用其他文本更好地压缩一个文本</li>
+<li>Levenshtein / Hamming / Jaccard 距离：通过查看在另一个字符串中转换一个字符串所需的操作数来检查两个字符串之间的相似性</li>
+<li>Word2Vec / Glove：检查两个平均向量之间的余弦相似度</li>
+</ul>
+</li>
+<li>TF-IDF
+<ul>
+<li>术语频率：减少对长文档的偏差</li>
+<li>反向文档频率：减少对常见令牌的偏差</li>
+<li>TF-IDF：用于标识文档中最重要的标记，删除不重要的标记，或作为降维的预处理步骤</li>
+</ul>
+</li>
+<li>降维
+<ul>
+<li>PCA：将文本缩小为50或100维向量</li>
+<li>SVD：将文本缩小为50或100维向量</li>
+<li>LDA：TF-IDF，然后是SVD</li>
+<li>LSA：创建主题向量</li>
+</ul>
+</li>
+<li>外部模型
+<ul>
+<li>情绪分析器：为任何文本获取负面或正面情绪的向量</li>
+<li>主题模型：使用另一个数据集为新数据集创建主题向量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4><span id="深度学习神经网络">深度学习/神经网络</span></h4>
+<ul>
+<li>神经网络声称是端到端的自动特征工程。所以特征工程没用了么？并不是这样的。特征工程将重点转移到架构工程。</li>
+<li>尽管承诺：计算机视觉使用的特征， 例如：
+<ul>
+<li>HOG</li>
+<li>SIFT</li>
+<li>whitening</li>
+<li>perturbation</li>
+<li>image pyramids</li>
+<li>rotation</li>
+<li>z-scaling</li>
+<li>log-scaling</li>
+<li>frame- grams</li>
+<li>external semantic data</li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<h4><span id="leakage-golden-features">Leakage / Golden Features</span></h4>
+<ul>
+<li>特征工程可以帮助利用泄露</li>
+<li>逆向工程
+<ul>
+<li>使用rainbow表反转 MD5 Hash</li>
+<li>将 TF-IDF反转回术语频率</li>
+<li>编码样本数据集的顺序</li>
+<li>编码文件创建日期</li>
+</ul>
+</li>
+<li>规则挖掘
+<ul>
+<li>查找简单的规则（并对其进行编码）以帮助您的模型</li>
+</ul>
+</li>
+</ul>
+<!-- $$
+f(n) = \begin{cases}
+ \frac{n}{2},
+ & \text{if } n\text{ is even}
+ \\ 3n+1, & \text{if } n\text{ is odd}
+ \end{cases}
+$$ -->
+<h3><span id="参考资料">参考资料</span></h3>
+<p><a href="https://www.slideshare.net/HJvanVeen/feature-engineering-72376750" target="_blank" rel="noopener">Tips &amp; Tricks for Feature Engineering / Applied Machine Learning</a><br>
+[]</p>
+
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/2019-07-30-机器学习优化方法/" data-toggle="tooltip" data-placement="top" title="机器学习优化方法">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/2019-07-01-ML-in-action-01/" data-toggle="tooltip" data-placement="top" title="Machine Learning Basics">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>
+
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">特征工程包含以下几个方面：</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">特征使用方案</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">特征获取方案</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">特征处理</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">特征监控</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">最基本的特征工程方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">类别特征</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">数值特征</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">时间特征 (Temporal variables)</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">空间特征（Spatial Variables）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">自然语言处理（Natural Language Processing）</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">深度学习/神经网络</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">Leakage / Golden Features</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#null"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">参考资料</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#特征工程" title="特征工程">特征工程</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="http://wenjing-liu.github.io" target="_blank">Wenjing Liu</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'J'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/wenjing-liu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Wenjing Liu 2021
+                    <br>
+                    <!-- Theme by <a href="http://beantech.org">BeanTech</a> -->
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span><a href="http://wenjing-liu.github.io">Wenjing Liu</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=wenjing-liu&repo=wenjing-liu.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://wenjing-liu.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://wenjing-liu.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+
+</html>

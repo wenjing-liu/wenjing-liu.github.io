@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Wenjing | Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://wenjing-liu.github.io/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- hexo-inject:begin --><!-- hexo-inject:end --><!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/header_img/home.jpg') 
+            /*config*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="site-heading">
+                        <h1>Wenjing Liu</h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading">Homepage</span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Wenjing Liu</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
+                <!-- Main Content -->
+
+
+<div class="post-preview">
+
+    <a href="/article/2019-12-04-深度学习笔记-C4/">
+        <h2 class="post-title">
+            卷积神经网络
+        </h2>
+        <h3 class="post-subtitle">
+            Convolutional Neural Networks
+        </h3>
+        <div class="post-content-preview">
+            Convolutional Neural Networks
+
+Computer vision
+Edge detection example
+More edge detection
+Padding
+Strided convolutions
+Convolutions over volumes
+One layer of a convolutional net
+A simple convolutio......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Wenjing Liu on
+            2019-12-04
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#deeplearning.ai, C4" title="deeplearning.ai, C4">deeplearning.ai, C4</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/2019-12-04-深度学习笔记-C5/">
+        <h2 class="post-title">
+            序列模型
+        </h2>
+        <h3 class="post-subtitle">
+            Sequence Models
+        </h3>
+        <div class="post-content-preview">
+            Recurrent Neural Networks
+
+Why sequence models
+Notation
+Recurrent neural network model
+Backpropagation through time
+Different types of rnns
+Language model and sequence generation
+Sampling novel seq......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Wenjing Liu on
+            2019-12-04
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#deeplearning.ai, C5" title="deeplearning.ai, C5">deeplearning.ai, C5</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/2020-01-20-机器学习总结/">
+        <h2 class="post-title">
+            机器学习
+        </h2>
+        <h3 class="post-subtitle">
+            Machine Learning
+        </h3>
+        <div class="post-content-preview">
+            中文总结
+
+...
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Wenjing Liu on
+            2019-12-04
+        </p>
+        <div class="tags">
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/2019-12-04-深度学习笔记-C3/">
+        <h2 class="post-title">
+            结构化机器学习项目 
+        </h2>
+        <h3 class="post-subtitle">
+            Structuring Machine Learning Projects
+        </h3>
+        <div class="post-content-preview">
+            Introduction to ML strategy
+
+Why ML Strategy?
+Orthogonalization
+
+Setting up your goal
+
+Single number evaluation metric
+Satisficing and optimizing metrics
+Train/dev/test distributions
+Size of dev an......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Wenjing Liu on
+            2019-12-04
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#deeplearning.ai, C3" title="deeplearning.ai, C3">deeplearning.ai, C3</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/2019-12-04-深度学习笔记-C2/">
+        <h2 class="post-title">
+            改善深层神经网络：超参数调试、正则化以及优化
+        </h2>
+        <h3 class="post-subtitle">
+            Improving deep neural networks: hyperparameter tuning, regularization and optimization
+        </h3>
+        <div class="post-content-preview">
+            Setting up your ML application
+
+Train/dev/test sets
+Bias/Variance
+Basic “recipe” for machine learning
+
+Regularizing your neural network
+
+Regularization
+Why regularization reduces overfitting
+Dropou......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Wenjing Liu on
+            2019-12-04
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#deeplearning.ai, C2" title="deeplearning.ai, C2">deeplearning.ai, C2</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/2019-12-04-深度学习笔记-C1/">
+        <h2 class="post-title">
+            神经网络和深度学习
+        </h2>
+        <h3 class="post-subtitle">
+            Neural Networks and Deep Learning
+        </h3>
+        <div class="post-content-preview">
+            Introduction to Deep Learning
+
+Welcome
+What is a Neural Network?
+Supervised Learning with Neural Networks
+Why is Deep Learning taking off?
+About this Course
+
+Basics of Neural Network Programming
+
+B......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Wenjing Liu on
+            2019-12-04
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#deeplearning.ai, C1" title="deeplearning.ai, C1">deeplearning.ai, C1</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/2019-08-13-自然语言处理/">
+        <h2 class="post-title">
+            自然语言处理，NLP
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            概念
+自然语言处理是计算机处理人类语言的一门技术：
+
+句法语义分析：对于给定的句子，进行分词、词性标记、命名实体识别和链接、句法分析、语义角色识别和多义词消歧。
+信息抽取：从给定文本中抽取重要的信息，比如，时间、地点、人物、事件、原因、结果、数字、日期、货币、专有名词等等。通俗说来，就是要了解谁在什么时候、什么原因、对谁、做了什么事、有什么结果。涉及到实体识别、时间抽取、因果关系抽取等关键技......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Wenjing Liu on
+            2019-08-13
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#应用" title="应用">应用</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/2019-08-12-主成分分析/">
+        <h2 class="post-title">
+            主成分分析，PCA
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            概念
+
+多重共线性 multi-collinearity
+多重共线性是指线性回归模型中的解释变量之间由于存在精确相关关系或高度相关关系而使模型估计失真或难以估计准确。
+PCA
+通过线性变换将原始数据变换为一组各维度线性无关的表示，可用于提取数据的主要特征分量
+降维
+就是找到k个超平面，把原n维空间的数据投影到这k个超平面上，使原n维数据降为k维。
+PCA核心思想
+降维后的数据尽可能分散
+PC......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Wenjing Liu on
+            2019-08-12
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#数据降维" title="数据降维">数据降维</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/2019-08-12-K-均值聚类/">
+        <h2 class="post-title">
+            K均值聚类，K Means Clustering
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            概念
+K均值聚类是一种无监督学习算法，尝试在数据中将类似的群集组合在一起。
+
+
+典型的聚类问题是什么样的呢？
+
+集群类似文档
+基于特征的客户群
+市场细分
+识别类似的物理组
+
+
+
+算法过程
+
+选择集群的个数 ‘K’
+随机将每个点分配给一个集群
+直到集群停止改变，重复以下：
+
+
+对于每个群集，通过获取群集中点的平均向量来计算群集质心
+将每个数据点分配最接近的群集质心
+
+
+
+K的选择
+
+没有简单的......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Wenjing Liu on
+            2019-08-12
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#分类算法" title="分类算法">分类算法</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/article/2019-08-10-支持向量机/">
+        <h2 class="post-title">
+            支持向量机 SVM
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            概念
+
+将向量映射到一个更高维的空间里，在这个空间里建立有一个最大间隔超平面。在分开数据的超平面的两边建有两个互相平行的超平面，分隔超平面使两个平行超平面的距离最大化。假定平行超平面间的距离或差距越大，分类器的总误差越小。
+基本模型是定义在特征空间上的间隔最大的线性分类器
+SVM的的学习算法就是求解凸二次规划的最优化算法。
+
+数学理论
+评估指标
+ScikitLearn 中的线性回归用法
+12......
+        </div>
+    </a>
+    
+        <p class="post-meta" style="margin: 10px 0;">
+            Posted by Wenjing Liu on
+            2019-08-10
+        </p>
+        <div class="tags">
+            
+              <a href="/tags/#分类算法" title="分类算法">分类算法</a>
+            
+        </div>
+    
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+    
+        <li class="next">
+            <a href="/archives/2/">Older Posts &rarr;</a>
+        </li>
+    
+</ul>
+
+
+
+                <br>
+
+                <!-- require APlayer -->
+                
+
+                <!-- 如果开启评论功能 -->
+                
+            </div>
+
+          <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        <!-- Featured Tags -->
+
+<section>
+    <!-- no hr -->
+    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+    <div class="tags">
+        
+            
+            <a href="/tags/#JavaScript" title="JavaScript" rel="1">JavaScript</a>
+            
+        
+            
+            <a href="/tags/#Machine Learning" title="Machine Learning" rel="1">Machine Learning</a>
+            
+        
+            
+            <a href="/tags/#优化方法" title="优化方法" rel="1">优化方法</a>
+            
+        
+            
+            <a href="/tags/#特征工程" title="特征工程" rel="1">特征工程</a>
+            
+        
+            
+            <a href="/tags/#学习计划" title="学习计划" rel="1">学习计划</a>
+            
+        
+            
+            <a href="/tags/#前端，数据科学" title="前端，数据科学" rel="1">前端，数据科学</a>
+            
+        
+            
+            <a href="/tags/#回归算法" title="回归算法" rel="1">回归算法</a>
+            
+        
+            
+            <a href="/tags/#模型选择" title="模型选择" rel="1">模型选择</a>
+            
+        
+            
+            <a href="/tags/#分类算法" title="分类算法" rel="5">分类算法</a>
+            
+        
+            
+            <a href="/tags/#数据降维" title="数据降维" rel="1">数据降维</a>
+            
+        
+            
+            <a href="/tags/#应用" title="应用" rel="1">应用</a>
+            
+        
+            
+            <a href="/tags/#deeplearning.ai, C1" title="deeplearning.ai, C1" rel="1">deeplearning.ai, C1</a>
+            
+        
+            
+            <a href="/tags/#deeplearning.ai, C2" title="deeplearning.ai, C2" rel="1">deeplearning.ai, C2</a>
+            
+        
+            
+            <a href="/tags/#deeplearning.ai, C3" title="deeplearning.ai, C3" rel="1">deeplearning.ai, C3</a>
+            
+        
+            
+            <a href="/tags/#deeplearning.ai, C4" title="deeplearning.ai, C4" rel="1">deeplearning.ai, C4</a>
+            
+        
+            
+            <a href="/tags/#deeplearning.ai, C5" title="deeplearning.ai, C5" rel="1">deeplearning.ai, C5</a>
+            
+        
+    </div>
+</section>
+
+        <hr>
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+    <h5><a href="/about/">ABOUT ME</a></h5>
+    <div class="short-about">
+
+        
+            <img id = "avatar_pic" src="/img/avatar/wenjing-liu.jpg" />
+        
+
+        
+            <p>Stay hungry,Stay foolish</p>
+        
+
+        <!-- SNS Link -->
+        <ul class="list-inline">
+            
+            
+            
+
+            
+
+            
+
+            
+                <li>
+                    <a target="_blank"  href="https://github.com/wenjing-liu">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </li>
+            
+            
+            
+            
+        </ul>
+    </div>
+</section>
+
+        <hr>
+    
+        
+  <h5>RECENT POSTS</h3>
+  <div class="widget">
+    <ul>
+      
+        <li>
+          <a href="/article/2019-12-04-深度学习笔记-C4/">卷积神经网络</a>
+        </li>
+      
+        <li>
+          <a href="/article/2019-12-04-深度学习笔记-C5/">序列模型</a>
+        </li>
+      
+        <li>
+          <a href="/article/2020-01-20-机器学习总结/">机器学习</a>
+        </li>
+      
+        <li>
+          <a href="/article/2019-12-04-深度学习笔记-C3/">结构化机器学习项目 </a>
+        </li>
+      
+        <li>
+          <a href="/article/2019-12-04-深度学习笔记-C2/">改善深层神经网络：超参数调试、正则化以及优化</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        <hr>
+    
+        <!-- Friends Blog -->
+
+<h5>FRIENDS</h5>
+<ul class="list-inline">
+
+    
+        <li><a href="http://wenjing-liu.github.io" target="_blank">Wenjing Liu</a></li>
+    
+</ul>
+
+        <hr>
+    
+        
+    <h5>ARCHIVES</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+
+        <hr>
+    
+</div>
+
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/wenjing-liu">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Wenjing Liu 2021
+                    <br>
+                    <!-- Theme by <a href="http://beantech.org">BeanTech</a> -->
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span><a href="http://wenjing-liu.github.io">Wenjing Liu</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=wenjing-liu&repo=wenjing-liu.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!--
+     Because of the native support for backtick-style fenced code blocks
+     right within the Markdown is landed in Github Pages,
+     From V1.6, There is no need for Highlight.js,
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://wenjing-liu.github.io/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://wenjing-liu.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work --><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+
+</html>
